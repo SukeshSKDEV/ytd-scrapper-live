@@ -106,7 +106,9 @@ def scrape_videos():
             youtube_coll=db['video_scrape_data']
             youtube_coll.insert_many(video_details)
             
-            return render_template('results.html',videos=video_details)
+            return "success"
+            
+#             return render_template('results.html',videos=video_details)
 
         except Exception as e:
             logging.info(e)
