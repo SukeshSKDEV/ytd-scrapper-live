@@ -106,12 +106,15 @@ def scrape_videos():
             db = client['youtube_scraping']
             youtube_coll=db['video_scrape_data']
             youtube_coll.insert_many(video_details)
+            
+            return render_template('results.html',videos=video_details)
 
         except Exception as e:
             logging.info(e)
             print('something is wrong')
+    else:
+        return render_template('index.html')
 
-    return render_template('results.html',videos=video_details)
 
 if __name__=="__main__":
-    app.run(host='127.0.0.1', port=8000, debug=True)
+    app.run(host="127.0.0.1",port=8000,debug=True)
